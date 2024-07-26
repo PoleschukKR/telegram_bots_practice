@@ -14,10 +14,11 @@ def start(message):
 @bot.message_handler(content_types=['text'])
 def get_weather(message):
     city = message.text.strip().lower()
+    #  библиотека requests позволяет отправлять запрос по определенном URL-адресу
     res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')
-    if res.status_code == 200:
-        data = json.loads(res.text)
-        temp = data["main"]["temp"]
+    if res.status_code == 200: # выполняем проверку
+        data = json.loads(res.text) #  обращаемся к модулю json, через к функции loads => res
+        temp = data["main"]["temp"] #  выводим значение ключа temp
         bot.reply_to(message, f'Сейчас температура в городе {city}: {temp}')
 
         if temp < 10:
