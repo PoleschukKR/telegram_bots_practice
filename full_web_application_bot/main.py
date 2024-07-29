@@ -8,7 +8,7 @@ dp = Dispatcher(bot)
 @dp.message_handler(commands=['start'])
 async def start(message: types.message):
     markup = types.ReplyKeyboardMarkup()
-    markup.add(types.KeyboardButton('Открыть веб страницу', web_app=WebhookInfo(url='https://github.com/PoleschukKR')))
+    markup.add(types.KeyboardButton('Открыть веб страницу', web_app=WebhookInfo(url='https://rawcdn.githack.com/PoleschukKR/telegram_bots_practice/main/full_web_application_bot/index.html')))
     await message.answer('Привет!', reply_markup=markup)
 
 executor.start_polling(dp)
